@@ -15,6 +15,7 @@ class Person{
     }
 }
 const prompt = require('prompt-sync')();
+//contactlist Array to save new contacts
 let contactList = new Array();
 function checkName(name){
     let namePattern = RegExp('[A-Z]{1}[a-z]{2,}')

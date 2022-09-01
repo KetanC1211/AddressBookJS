@@ -22,7 +22,7 @@ const prompt = require('prompt-sync')();
 let contactList = new Array();
 let t = true;
 while (t) {
-    let choice = prompt("\t--Menu-- \n1. Create Contact \n2. Disply \n3. Edit Contact \n4. Delete Contact\n5. Search\n6. Exit\n");
+    let choice = prompt("\t--Menu-- \n1. Create Contact \n2. Disply \n3. Edit Contact \n4. Delete Contact\n5. Search\n6. Sort\n7. Exit\n");
     if (choice === "1") {
         addContact();
     }
@@ -39,6 +39,9 @@ while (t) {
         searchContact();
     }
     if (choice === "6") {
+        sortingOfContacts();
+    }
+    if (choice === "7") {
         t = false;
     }
     if (choice != 1 && choice != 2 && choice != 3&&choice != 4 && choice != 5) {
@@ -174,8 +177,10 @@ function addContact(){
     contactList.push(obj);
     let Ketan = new Person('Ketan','Chindarkar','Hill Road','Mumbai','Maharashtra','400015','9967945885','ketan12@gmail.com');
     let Yash = new Person('Yash','Ghade','Farm House','Panji','Goa','404715','7897894851','yash@gmail.com');
+    let Ram = new Person('Ram','Zode','Rebulic House','Jaipur','Rajashthan','360152','7894568521','ram12@gmail.com');
     contactList.push(Ketan);
     contactList.push(Yash);
+    contactList.push(Ram);
 }
 
 function displaycontact(){
@@ -322,5 +327,30 @@ function searchContact(){
         }
     }
 }
-
+function sortingOfContacts(){
+    while(true){
+        let choice = prompt('--Sort Contacts---\n1. By first Name\n2. Back\n')
+        if (choice === "1") {
+            sortByName();
+        }
+        if (choice === "2") {
+            break;
+        }
+    }
+}
+function sortByName(){
+    contactList.sort((a, b) => {
+        const nameA = a.firstName.toUpperCase(); // ignore upper and lowercase
+        const nameB = b.firstName.toUpperCase(); // ignore upper and lowercase
+        if (nameA < nameB) {
+          return -1;
+        }
+        if (nameA > nameB) {
+          return 1;
+        }
+        // names must be equal
+        return 0;
+      });
+      console.log(contactList);
+}
 

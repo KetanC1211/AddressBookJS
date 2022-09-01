@@ -243,11 +243,52 @@ function editContact(){
     }
 }
 function deleteContact(){
-    let userGivenFirstName = prompt('Enter first name to edit contact\n5')
+    let userGivenFirstName = prompt('Enter first name to delete contact\n5')
     for(let i =0;i<contactList.length;i++){        
         if(userGivenFirstName==contactList[i].firstName){
             contactList.splice(i, 1); 
             i--;
+        }
+    }
+}
+//Search Method
+function searchByCityName (){
+    let userGivenCity = prompt('Enter City to search person\n');
+    let count = 0;
+    for(let i =0;i<contactList.length;i++){        
+        if(userGivenCity==contactList[i].city){
+            console.log(contactList[i]);
+            count++;
+        }
+    }
+    if(count==0){
+        console.log("No record found");
+    }
+}
+function searchByStateName (){
+    let userGivenState = prompt('Enter State to search person\n');
+    let count = 0;
+    for(let i =0;i<contactList.length;i++){        
+        if(userGivenState==contactList[i].state){
+            console.log(contactList[i]);
+            count++;
+        }
+    }
+    if(count==0){
+        console.log("No record found");
+    }
+}
+function searchContact(){
+    while(true){
+        let choice = prompt('--Search Menu---\n1. Search person by City\n2. Search person by State\n3. Back\n')
+        if (choice === "1") {
+            searchByCityName();
+        }
+        if (choice === "2") {
+            searchByStateName();
+        }
+        if (choice === "3") {
+            break;
         }
     }
 }
